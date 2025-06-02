@@ -1,4 +1,4 @@
-/* Reset & Base */
+/* Base Reset */
 * {
   margin: 0;
   padding: 0;
@@ -10,15 +10,15 @@ body {
   background-color: #f9f9fb;
   color: #333;
   line-height: 1.6;
-  margin: 0;
-  padding: 0;
+  scroll-behavior: smooth;
 }
 
+/* Hero Section */
 .hero {
-  background-image: url('kachess_1.png'); /* Update the path if needed */
+  background-image: url('kachess_1.png');
   background-size: cover;
   background-position: center;
-  height: 100vh; /* Full screen height */
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,7 +31,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5); /* Dark overlay for contrast */
+  background: rgba(0, 0, 0, 0.5);
   z-index: 0;
 }
 
@@ -39,93 +39,99 @@ body {
   position: relative;
   z-index: 1;
   max-width: 80%;
+  animation: fadeInUp 1s ease-out;
 }
 
 .hero-content h1 {
   font-size: 3rem;
   margin-bottom: 0.5rem;
+  letter-spacing: 1px;
 }
 
 .hero-content p {
   font-size: 1.25rem;
+  font-weight: 300;
 }
 
-/* Main Content Container */
+/* Fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Main Content */
 main {
   padding: 2rem;
   max-width: 900px;
   margin: auto;
 }
 
-/* Header */
-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-header p a {
-  color: #007acc;
-  text-decoration: none;
-  margin: 0 0.5rem;
-}
-
-header p a:hover {
-  text-decoration: underline;
-}
-
-/* Section */
 section {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   background: #fff;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  padding: 1.8rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  animation: fadeInUp 0.8s ease both;
+  transition: transform 0.2s;
 }
 
+section:hover {
+  transform: translateY(-2px);
+}
+
+/* Headings */
 section h2 {
+  font-size: 1.8rem;
   color: #007acc;
   margin-bottom: 1rem;
-  font-size: 1.6rem;
+  position: relative;
+  padding-bottom: 0.5rem;
   border-bottom: 2px solid #e0e0e0;
-  padding-bottom: 0.3rem;
 }
 
 section h3 {
-  color: #333;
-  font-size: 1.2rem;
-  margin: 1rem 0 0.3rem;
+  font-size: 1.3rem;
+  color: #222;
+  margin: 1.2rem 0 0.5rem;
 }
 
 section ul {
-  list-style-type: disc;
-  padding-left: 1.5rem;
-  margin-bottom: 1rem;
+  list-style: none;
+  padding-left: 0;
+}
+
+section ul li::before {
+  content: "⟶";
+  color: #007acc;
+  margin-right: 0.6rem;
+  font-weight: bold;
 }
 
 section ul li {
   margin-bottom: 0.5rem;
+  line-height: 1.5;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .hero h1 {
-    font-size: 2rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
-  main {
-    padding: 1rem;
-  }
-
-  section h2 {
-    font-size: 1.4rem;
-  }
+/* Skills & Lists */
+section ul.skills li {
+  display: inline-block;
+  background: #eef6fb;
+  color: #007acc;
+  border-radius: 5px;
+  padding: 0.4rem 0.8rem;
+  margin: 0.3rem;
+  font-size: 0.95rem;
+  font-weight: 500;
 }
 
-/* Theme Toggle Button */
+/* Toggle Button */
 #theme-toggle {
   position: fixed;
   top: 1rem;
@@ -133,7 +139,7 @@ section ul li {
   background-color: #eee;
   color: #333;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1rem;
   border-radius: 20px;
   cursor: pointer;
   z-index: 999;
@@ -145,7 +151,22 @@ section ul li {
   background-color: #ddd;
 }
 
-/* Dark Mode Styles */
+/* Responsive */
+@media (max-width: 600px) {
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  section h2 {
+    font-size: 1.4rem;
+  }
+}
+
+/* Dark Theme */
 body.dark {
   background-color: #121212;
   color: #f0f0f0;
@@ -154,16 +175,18 @@ body.dark {
 body.dark section {
   background-color: #1e1e1e;
   color: #f0f0f0;
-  box-shadow: 0 1px 4px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
 }
 
-body.dark header h1,
-body.dark section h2,
-body.dark section h3 {
+body.dark h2 {
   color: #90caf9;
 }
 
-body.dark a {
+body.dark h3 {
+  color: #ddd;
+}
+
+body.dark ul li::before {
   color: #90caf9;
 }
 
